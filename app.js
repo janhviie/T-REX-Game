@@ -16,9 +16,12 @@ document.addEventListener('DOMContentLoaded',() =>{
 
     }
   }
-
+function jumpforPhone(){
+  isJumping = true
+  jump()
+}
   document.addEventListener('keyup', control)
-
+document.addEventListener('touchstart', jumpforPhone)
 var position=0
 
 function jump(){
