@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Amatic+SC);
+.dino
+{
+  position: absolute;
+  width: 60px;
+  height: 60px;
+
+  bottom: 0px;
+}
+
+
+.obstacle{
+
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: orange;
+  bottom: 0px;
+}
+#alert{
+  color: #1C2833 ;
+  margin: auto;
+  font-size: 20vw;
+  font-weight: bold;
+  font-family: 'Amatic SC';
+}
+
+.cloud{
+  position: absolute;
+  top: 100px;
+  
+}
