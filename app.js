@@ -68,12 +68,12 @@ val = 0
 function score() {
  let scoreid = setInterval(function(){
 
-   if(isgameover){
+   if(isgameover)
      clearInterval(scoreid)
 
    finalscore = val
 
-}
+
    val+=1
    scoreval.innerText = "SCORE: " +val
    grid.appendChild(scoreval)
