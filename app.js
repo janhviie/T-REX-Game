@@ -3,6 +3,14 @@ document.addEventListener('DOMContentLoaded',() =>{
   const dino = document.querySelector('.dino')
   const grid = document.querySelector('.grid')
    const text = document.getElementById('alert')
+   const btn = document.getElementById('replay')
+   const ss = document.getElementById('scoreval')
+const line = document.createElement('div')
+let finalscore
+line.classList.add("line")
+line.style.width = screen.width + "px";
+grid.appendChild(line)
+
   let isJumping = false
   let isgameover = false
 
@@ -22,17 +30,19 @@ function jumpforPhone(){
 }
   document.addEventListener('keyup', control)
 document.addEventListener('touchstart', jumpforPhone)
-var position=0
+var position=150
+
+// fun to bounce the dinooo
 
 function jump(){
   let upid = setInterval(function(){
 
-    if (position === 150){
+    if (position === 300){
       clearInterval(upid)
 
       let downid = setInterval(function(){
         console.log('down')
-        if (position === 30){
+        if (position === 180){
 
           clearInterval(downid)
           isJumping = false
@@ -45,15 +55,43 @@ function jump(){
     console.log('up')
     position+=30
     dino.style.bottom=position + 'px'
-  }, 20)
+  }, 30)
 }
+
+// update score val
+
+scoreval = document.createElement('h2')
+scoreval.classList.add('score')
+scoreval.innerText = "SCORE: 00000"
+val = 0
+
+function score() {
+ let scoreid = setInterval(function(){
+
+   if(isgameover){
+     clearInterval(scoreid)
+
+   finalscore = val
+
+}
+   val+=1
+   scoreval.innerText = "SCORE: " +val
+   grid.appendChild(scoreval)
+ }, 30)
+}
+if(!isgameover) score()
+
+
+
+// to create obstacles
+
 
 flag=0
 function createObstacles(){
   let randomTime = Math.random() * 5000
   let obstaclePos = 1000
 const obstacle = document.createElement('img')
-obstacle.setAttribute('src', 'cactus.png')
+obstacle.setAttribute('src', '_cactus.png')
   if(!isgameover) {
 
     obstacle.classList.add('obstacle')
@@ -65,10 +103,15 @@ obstacle.setAttribute('src', 'cactus.png')
 
   let obsid = setInterval(function(){
 
-    if (obstaclePos > 0 && obstaclePos < 50 && position <45){
+    if (obstaclePos > 0 && obstaclePos < 55 && position <170){
       clearInterval(obsid)
       isgameover = true
-      text.innerHTML = "GAME OVER"
+      text.innerHTML = "G A M E    O V E R !"
+      ss.innerHTML = "S C O R E : "+ finalscore
+      btn.setAttribute('src', 'button.png')
+      btn.addEventListener("click", function() {
+        location.reload()
+      })
 
       // remove all children
       while (grid.firstChild) {
@@ -78,9 +121,11 @@ obstacle.setAttribute('src', 'cactus.png')
     obstaclePos-= 10
     obstacle.style.left =  obstaclePos + 'px'
 
-  }, 20)
-
+  }, 35)
+setTimeout(function(){
   if(!isgameover) setTimeout(createObstacles, randomTime)
+}, 1000)
+
 
 
 }
@@ -88,10 +133,12 @@ obstacle.setAttribute('src', 'cactus.png')
 createObstacles()
 
 
+// to create clouds
+
 function clouds(){
   let cloudPos = 1000
   const cloud = document.createElement('img')
-  cloud.setAttribute('src' , 'cloud.png')
+  cloud.setAttribute('src' , '_cloud2.png')
   cloud.classList.add('cloud')
   cloud.style.left = "1000px"
   if(!isgameover) grid.appendChild(cloud)
@@ -104,20 +151,25 @@ function clouds(){
         grid.removeChild(grid.lastChild)
       }}
     cloudPos-=30
-    cloud.style.left =cloudPos + "px"
-  }, 100)
 
-  let randomCld = Math.random() * 10000
+    cloud.style.left =cloudPos + "px"
+    var r = Math.random() * 1000
+    if(r%2){
+    cloud.style.top = "110px"
+  }
+
+
+}, 1000)
+
+  let randomCld = Math.random() * 60000
 
   setTimeout(clouds, randomCld)
 
 }
 
-
+setTimeout(function(){
 if(!isgameover) clouds()
-
-
-
+}, 5000)
 
 
 

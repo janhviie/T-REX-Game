@@ -1,32 +1,54 @@
-@import url(https://fonts.googleapis.com/css?family=Amatic+SC);
+
 .dino
 {
   position: absolute;
   width: 60px;
   height: 60px;
 
-  bottom: 0px;
+  bottom: 150px;
 }
 
 
+.score{
+  position: absolute;
+  padding: 30px;
+  margin: auto;
+  font-family: courier;
+  color: #1C2833;
+}
 .obstacle{
 
   position: absolute;
   width: 60px;
   height: 60px;
-  background-color: orange;
-  bottom: 0px;
+  bottom: 150px;
+  z-index: -1;
 }
+
+.line{
+
+    height: 1px;
+    background-color: darkgrey;
+    position: absolute;
+    bottom: 150px;
+}
+
 #alert{
+  font-size: 3vw;
   color: #1C2833 ;
   margin: auto;
-  font-size: 20vw;
-  font-weight: bold;
-  font-family: 'Amatic SC';
+  font-family: courier;
+}
+
+#scoreval{
+  font-size: 3vw;
+  color: #1C2833 ;
+  margin: auto;
+  font-family: courier;
 }
 
 .cloud{
   position: absolute;
-  top: 100px;
-  
+ top: 100px;
+
 }
