@@ -91,7 +91,7 @@ function createObstacles(){
   let randomTime = Math.random() * 5000
   let obstaclePos = 1000
 const obstacle = document.createElement('img')
-obstacle.setAttribute('src', '_cactus.png')
+obstacle.setAttribute('src', 'cactus.png')
   if(!isgameover) {
 
     obstacle.classList.add('obstacle')
@@ -138,7 +138,7 @@ createObstacles()
 function clouds(){
   let cloudPos = 1000
   const cloud = document.createElement('img')
-  cloud.setAttribute('src' , '_cloud2.png')
+  cloud.setAttribute('src' , 'cloud2.png')
   cloud.classList.add('cloud')
   cloud.style.left = "1000px"
   if(!isgameover) grid.appendChild(cloud)
