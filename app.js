@@ -159,9 +159,9 @@ function clouds(){
   }
 
 
-}, 1000)
+}, 2000)
 
-  let randomCld = Math.random() * 60000
+  let randomCld = Math.random() * 10000
 
   setTimeout(clouds, randomCld)
 
@@ -169,7 +169,7 @@ function clouds(){
 
 setTimeout(function(){
 if(!isgameover) clouds()
-}, 5000)
+}, 1000)
 
 
 
